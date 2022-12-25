@@ -1,4 +1,4 @@
-const data = {
+export const data = {
   header1: "Header 1",
   header2: "Header 2",
   content: [
