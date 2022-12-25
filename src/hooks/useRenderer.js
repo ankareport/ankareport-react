@@ -5,7 +5,9 @@ export function useRenderer({ layout, data }) {
   const [renderer, setRenderer] = useState();
 
   useEffect(() => {
-    if (rendererRef.current) {
+    const el = rendererRef.current;
+
+    if (el) {
       const rendererInstance = window.AnkaReport.render({
         element: rendererRef.current,
         layout,
@@ -15,10 +17,10 @@ export function useRenderer({ layout, data }) {
       setRenderer(rendererInstance);
 
       return () => {
-        rendererRef.current.innerHTML = "";
+          el.innerHTML = "";
       };
     }
-  }, [rendererRef.current, layout, data]);
+  }, [rendererRef, layout, data]);
 
   return {
     renderer,
